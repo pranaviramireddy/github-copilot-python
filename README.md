@@ -1,60 +1,170 @@
-# Refactor a Sudoku Game written in Python Flask
+# Sudoku Game – Refactored with GitHub Copilot
 
-Use this simple Sudoku game as a starting point to practice your skills with GitHub Copilot. The goal is to refactor the code to use modern technologies, while also adding new features and improving the overall user experience.
+## Overview
 
-## Getting Started
+This project is a modernized version of the legacy Flask Sudoku application provided by Udacity. The application was refactored using GitHub Copilot to improve code quality, modularity, and maintainability while adding several new gameplay features.
 
-Follow these instructions to get a copy of the project up and running on your local machine.
+## Features
 
-### Dependencies
+- ✅ Modern modular Flask application structure
+- ✅ Sudoku puzzle generator with a unique solution
+- ✅ Difficulty levels:
+  - Easy
+  - Medium
+  - Hard
+- ✅ Timer that tracks puzzle completion time
+- ✅ Hint button that fills one correct cell and locks it
+- ✅ Check Puzzle button to highlight incorrect entries
+- ✅ Immediate feedback for invalid moves
+- ✅ Congratulations message when the puzzle is solved
+- ✅ Top 10 leaderboard
+  - Player name
+  - Completion time
+  - Difficulty level
+  - Hints used
+- ✅ Leaderboard stored using browser Local Storage
+- ✅ Dark Mode support
+- ✅ Responsive design for desktop and mobile
+- ✅ Alternating colors for each 3×3 Sudoku block
+- ✅ Unit tests using pytest
+
+---
+
+# Project Structure
 
 ```
-- Modern web browser (Chrome, Firefox, Edge, etc.)
-- Python 3
+starter/
+│
+├── app.py
+├── app_factory.py
+├── game_service.py
+├── routes.py
+├── generator.py
+├── solver.py
+├── validator.py
+├── board.py
+├── constants.py
+├── templates/
+├── static/
+├── tests/
+├── Screenshots/
+├── instruction.md
+└── README.md
 ```
 
-### Installation
+---
 
-1. Fork this repository to your GitHub account. (You can use the "Fork" button on the top right corner of the repository page.)
+# Installation
 
-2. Clone your forked repository to your local machine.
+Clone your repository
 
-3. Open a terminal window and navigate to the "github-copilot-python/starter" directory.
+```bash
+git clone <your-github-repository-url>
+cd github-copilot-python/starter
+```
 
-4. Create a Python virtual environment and activate it (optional but highly recommended).
+Create a virtual environment
+
+### Windows
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+### macOS/Linux
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-5. Install required Python packages.
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-6. Run the Flask app.
+---
+
+# Run the Application
 
 ```bash
 python app.py
 ```
 
-7. Open http://127.0.0.1:5000 in your browser.
+Open your browser and visit
 
-## Project Instructions
+```
+http://127.0.0.1:5000
+```
 
-Use GitHub Copilot to refactor the code for this game to add more advanced features. The goal is to create a more modern and maintainable codebase and add additional functionality to the final product. You can use any combination of code completion and chat features, like Ask, Edit, or Agent modes.
+---
 
-- Errors should be handled gracefully with appropriate messages to the user.
-- Implement a Sudoku board generator that creates a valid Sudoku puzzle with a unique solution.
-- Add a timer to track how long it takes to solve the puzzle.
-- Implement a solution checker that verifies if the user's solution is correct using event delegation.
-- Add a difficulty selector to allow users to choose between easy, medium, and hard puzzles.
-- Add a hint feature that provides clues for the user that are noted with unique colors.
-- Add a check puzzle button that checks the current state of the board against the solution.
-- User should get immediate feedback on their input, such as highlighting invalid entries.
-- Top 10 scores should be saved in local storage and displayed on the page with the user's name, time taken, hints used, and difficulty level.
-- The game should be responsive and work well on both desktop and mobile devices.
-- UI colors should be visually appealing and accessible.
-- Completed and correct puzzles should display a congratulatory message with the time taken and hints used and ask for the user's name for Top 10 times.
+# Run Tests
+
+```bash
+pytest
+```
+
+---
+
+# GitHub Copilot Usage
+
+GitHub Copilot was used throughout the project to:
+
+- Refactor the legacy Flask application
+- Create a modular project structure
+- Improve Sudoku generation logic
+- Ensure puzzles have a unique solution
+- Add difficulty levels
+- Implement the timer
+- Add Hint and Check Puzzle functionality
+- Implement the Top 10 leaderboard
+- Add Dark Mode
+- Improve responsive UI
+- Generate and improve unit tests
+
+All Copilot conversations required for the project are included in the **Screenshots** folder.
+
+---
+
+# Screenshots
+
+The **Screenshots** folder contains evidence of GitHub Copilot usage for:
+
+- Testing framework setup
+- Refactoring
+- Unique solution validation
+- Difficulty selector
+- Timer
+- Hint feature
+- Check Puzzle feature
+- Leaderboard implementation
+- Dark Mode
+- Responsive styling
+- Completion message
+
+---
+
+# Technologies Used
+
+- Python 3
+- Flask
+- HTML5
+- CSS3
+- JavaScript
+- Pytest
+- GitHub Copilot
+
+---
+
+# Author
+
+**Ramireddy Pranavi**
+
+Computer Science Undergraduate
+
+Andhra University College of Engineering
+
+2026 Graduate

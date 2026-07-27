@@ -2,17 +2,38 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sudoku Game</title>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
   <h1>Sudoku Game</h1>
-  <div id="sudoku-board"></div>
   <div class="controls">
+    <label for="difficulty-select">Difficulty:</label>
+    <select id="difficulty-select">
+      <option value="easy">Easy</option>
+      <option value="medium" selected>Medium</option>
+      <option value="hard">Hard</option>
+    </select>
     <button id="new-game">New Game</button>
+    <button id="check-puzzle">Check Puzzle</button>
     <button id="check-solution">Check Solution</button>
+    <button id="theme-toggle" type="button" class="theme-toggle" aria-pressed="false">🌙 Dark Mode</button>
+  </div>
+  <div class="game-status" aria-live="polite">
+    <span class="timer-label">Time: <span id="timer">00:00</span></span>
     <span id="message"></span>
   </div>
+  <div id="hint-count" class="hint-count">Hints used: 0</div>
+  <div id="sudoku-board"></div>
+  <section class="leaderboard-panel" aria-labelledby="leaderboard-title">
+    <div class="leaderboard-header">
+      <h2 id="leaderboard-title">Top 10 Leaderboard</h2>
+      <button id="clear-leaderboard" type="button">Clear Leaderboard</button>
+    </div>
+    <ul id="leaderboard-list"></ul>
+    <p id="leaderboard-empty">No completed runs yet.</p>
+  </section>
   <script src="/static/main.js"></script>
 </body>
 </html>
