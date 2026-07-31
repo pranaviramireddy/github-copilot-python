@@ -344,20 +344,78 @@ async function checkSolution() {
   }
 }
 
+function highlightConflicts() {
+    const boardDiv = document.getElementById("sudoku-board");
+    const inputs = boardDiv.getElementsByTagName("input");
+
+    // Remove previous conflict highlights
+    for (const input of inputs) {
+        input.classList.remove("invalid");
+    }
+
+    for (let i = 0; i < SIZE; i++) {
+        for (let j = 0; j < SIZE; j++) {
+            const idx = i * SIZE + j;
+            const value = inputs[idx].value;
+
+            if (!value) continue;
+
+            // Check row
+            for (let c = 0; c < SIZE; c++) {
+                if (c !== j && inputs[i * SIZE + c].value === value) {
+                    inputs[idx].classList.add("invalid");
+                    inputs[i * SIZE + c].classList.add("invalid");
+                }
+            }
+
+            // Check column
+            for (let r = 0; r < SIZE; r++) {
+                if (r !== i && inputs[r * SIZE + j].value === value) {
+                    inputs[idx].classList.add("invalid");
+                    inputs[r * SIZE + j].classList.add("invalid");
+                }
+            }
+
+            // Check 3×3 box
+            const startRow = Math.floor(i / 3) * 3;
+            const startCol = Math.floor(j / 3) * 3;
+
+            for (let r = startRow; r < startRow + 3; r++) {
+                for (let c = startCol; c < startCol + 3; c++) {
+
+                    if (r === i && c === j) continue;
+
+                    const other = r * SIZE + c;
+
+                    if (inputs[other].value === value) {
+                        inputs[idx].classList.add("invalid");
+                        inputs[other].classList.add("invalid");
+                    }
+                }
+            }
+        }
+    }
+}
+
 function handleCellInput(event) {
-  if (gameCompleted) {
-    event.target.value = '';
-    return;
-  }
+    if (gameCompleted) {
+        event.target.value = "";
+        return;
+    }
 
-  const val = event.target.value.replace(/[^1-9]/g, '');
-  event.target.value = val;
+    const val = event.target.value.replace(/[^1-9]/g, "");
+    event.target.value = val;
 
-  const idx = Number(event.target.dataset.index);
-  const row = Math.floor(idx / SIZE);
-  const col = idx % SIZE;
-  puzzle[row][col] = val ? parseInt(val, 10) : 0;
-  clearIncorrectHighlight();
+    const idx = Number(event.target.dataset.index);
+    const row = Math.floor(idx / SIZE);
+    const col = idx % SIZE;
+
+    puzzle[row][col] = val ? parseInt(val, 10) : 0;
+
+    clearIncorrectHighlight();
+
+    // Highlight duplicate values immediately
+    highlightConflicts();
 }
 
 // Wire buttons
