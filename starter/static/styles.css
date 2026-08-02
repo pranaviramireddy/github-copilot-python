@@ -127,7 +127,7 @@ h1 {
     outline: none;
     background: var(--cell-bg);
     color: var(--text-color);
-    transition: background 0.15s ease, box-shadow 0.15s ease;
+    transition: background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     padding: 0;
     cursor: text;
     font-family: 'Courier New', monospace;
@@ -309,6 +309,12 @@ h1 {
 
 #sudoku-board .sudoku-cell:not(:nth-child(27)):not(:nth-child(54)):not(:nth-child(27 + 9)):not(:nth-child(54 + 9n)) {
     border-bottom: 1px solid var(--border-color);
+}
+
+.sudoku-cell.invalid {
+    background: var(--cell-incorrect-bg);
+    border-color: #d32f2f;
+    color: var(--text-color);
 }
 
 .sudoku-cell:focus {
@@ -661,6 +667,13 @@ button:disabled {
     color: var(--muted-color);
 }
 .invalid {
+    
     background-color: #ffb3b3;
     border: 2px solid red;
+}
+.sudoku-cell.invalid,
+.sudoku-cell.prefilled.invalid {
+    background: #ff4d4d !important;
+    color: #ffffff !important;
+    border: 2px solid #d40000 !important;
 }
